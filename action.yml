@@ -21,7 +21,7 @@ outputs:
 
 runs:
   using: "docker"
-  image: "docker://public.ecr.aws/l7o7z1g8/actions/sonarqube-sast-actions:main-a826d5fca522735f794de51e0de7608b71df3cb8"  # Use prebuilt Docker image
+  image: "docker://ghcr.io/srimanpadmanabancb/gha-action/custom-action:latest"  # Use prebuilt Docker image
   args:
     - ${{ inputs.message }}
     - ${{ inputs.test-message }}
