@@ -17,4 +17,5 @@ jobs:
           message: "Hello from GitHub Actions!"
 
       - name: Print Action Output
-        run: echo "Received Output: ${{ steps.go-action.outputs.result }}"
+        run: |
+          echo "Received Output: ${{ steps.go-action.outputs.result }}"
