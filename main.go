@@ -19,6 +19,8 @@ func main() {
 	fmt.Println("🔥 Running Custom GitHub Action in Go!")
 	fmt.Printf("✅ Received message: %s\n", inputMessage)
 
+	fmt.Printf("✅ Received message: %s\n", os.Args[2])
+
 	// Emit output so it can be consumed in GitHub Actions Workflow
 	fmt.Printf("result=Processed: %s\n", inputMessage)
 }

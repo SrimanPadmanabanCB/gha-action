@@ -15,6 +15,7 @@ jobs:
         id: go-action
         with:
           message: "Hello from GitHub Actions!"
+          test-message: "Test Message"
 
       - name: Print Action Output
         run: |
