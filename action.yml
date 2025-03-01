@@ -17,6 +17,6 @@ outputs:
 
 runs:
   using: "docker"
-  image: "docker://ghcr.io/srimanPadmanabacb//gha-action/custom-action:latest"  # Use prebuilt Docker image
+  image: "docker://ghcr.io/srimanPadmanabacb/gha-action/custom-action:latest"  # Use prebuilt Docker image
   args:
     - ${{ inputs.message }}
