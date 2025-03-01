@@ -1,0 +1,44 @@
+name: Build & Push Docker Image to GHCR
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write  # Required to push to GitHub Container Registry (GHCR)
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+
+      - name: Log in to GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Set Up Image Name and Tag
+        id: vars
+        run: |
+          REPO_NAME_LOWERCASE=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+          IMAGE_NAME="ghcr.io/$REPO_NAME_LOWERCASE/my-app"
+          IMAGE_TAG="latest"
+          echo "IMAGE_NAME=$IMAGE_NAME" >> $GITHUB_ENV
+          echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
+          echo "::set-output name=image_uri::$IMAGE_NAME:$IMAGE_TAG"
+
+      - name: Build Docker Image
+        run: |
+          docker build -t $IMAGE_NAME:$IMAGE_TAG .
+
+      - name: Push Docker Image to GHCR
+        run: |
+          docker push $IMAGE_NAME:$IMAGE_TAG
+
+      - name: Output Image URI
+        run: |
+          echo "Pushed Image: ${{ steps.vars.outputs.image_uri }}"

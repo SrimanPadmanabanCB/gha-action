@@ -1,0 +1,22 @@
+name: "My Go-Based GitHub Action"
+description: "Runs a custom Go program inside Docker"
+author: "Your Name"
+branding:
+  icon: "terminal"
+  color: "blue"
+
+inputs:
+  message:
+    description: "Message to print"
+    required: true
+    default: "Hello from Go!"
+
+outputs:
+  result:
+    description: "Processed message"
+
+runs:
+  using: "docker"
+  image: "ghcr.io/srimanPadmanabacb/my-go-action:latest"  # Use prebuilt Docker image
+  args:
+    - ${{ inputs.message }}

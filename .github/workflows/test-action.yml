@@ -1,0 +1,20 @@
+ame: Test My Go Action
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  run-go-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Run My Custom Go Action
+        uses: SrimanPadmanabanCB/gha-action@main
+        id: go-action
+        with:
+          message: "Hello from GitHub Actions!"
+
+      - name: Print Action Output
+        run: echo "Received Output: ${{ steps.go-action.outputs.result }}"
