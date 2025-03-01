@@ -23,4 +23,5 @@ runs:
   using: "docker"
   image: "docker://ghcr.io/srimanpadmanabancb/gha-action/custom-action:latest"  # Use prebuilt Docker image
   args:
-    - ${{ inputs.message }} ${{ inputs.test-message }}
+    - ${{ inputs.message }}
+    - ${{ inputs.test-message }}
