@@ -21,6 +21,14 @@ func main() {
 
 	fmt.Printf("✅ Received message: %s\n", os.Args[2])
 
+	runID := os.Getenv("GITHUB_RUN_ID")
+
+	// If empty, provide fallback
+	if runID == "" {
+		runID = "Unknown Run ID"
+	}
+
+	fmt.Println("🚀 GitHub Run ID:", runID)
 	// Emit output so it can be consumed in GitHub Actions Workflow
 	fmt.Printf("result=Processed: %s\n", inputMessage)
 }
