@@ -29,6 +29,15 @@ func main() {
 	}
 
 	fmt.Println("🚀 GitHub Run ID:", runID)
+
+	runAttempt := os.Getenv("GITHUB_RUN_ATTEMPT")
+
+	// If empty, provide fallback
+	if runAttempt == "" {
+		runAttempt = "Unknown Run Attempt"
+	}
+
+	fmt.Println("🚀 GitHub Run Attempt:", runAttempt)
 	// Emit output so it can be consumed in GitHub Actions Workflow
 	fmt.Printf("result=Processed: %s\n", inputMessage)
 }
