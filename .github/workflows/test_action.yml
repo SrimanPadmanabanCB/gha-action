@@ -19,3 +19,5 @@ jobs:
           url: "ghcr.io/srimanpadmanabancb/gha-action/custom-action:latest"
           digest: "test"
           type: "docker"
+          cloudbees-url: "https://test-url.com"
+          cloudbees-pat: "testPat"
