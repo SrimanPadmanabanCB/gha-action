@@ -1,0 +1,21 @@
+name: Test My Go Action
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  run-go-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Run My Custom Go Action
+        uses: SrimanPadmanabanCB/gha-action@main
+        id: go-action
+        with:
+          name: "custom-action"
+          version: 1.0.1
+          url: "ghcr.io/srimanpadmanabancb/gha-action/custom-action:latest"
+          digest: "test"
+          type: "docker"
