@@ -35,8 +35,8 @@ runs:
     ARTIFACT_URL: ${{ inputs.url }}
     ARTIFACT_DIGEST: ${{ inputs.digest }}
     ARTIFACT_TYPE: ${{ inputs.type }}
-    GITHUB_RUN_ID: ${{ github.run_id }}
-    GITHUB_RUN_ATTEMPT: ${{ github.run_attempt }}
-    GITHUB_RUN_NUMBER: ${{ github.run_number }}
-    REPO_FULL_NAME: ${{ github.repository }}
-    WORKFLOW_NAME: ${{ github.workflow }}
+#    GITHUB_RUN_ID: ${{ github.run_id }}
+#    GITHUB_RUN_ATTEMPT: ${{ github.run_attempt }}
+#    GITHUB_RUN_NUMBER: ${{ github.run_number }}
+#    REPO_FULL_NAME: ${{ github.repository }}
+#    WORKFLOW_NAME: ${{ github.workflow }}
