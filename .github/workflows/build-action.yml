@@ -17,10 +17,6 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v4
-        with:
-          repository: calculi-corp/gha-register-build-artifact
-          ref: CBP-8755
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       - name: Log in to GHCR
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
