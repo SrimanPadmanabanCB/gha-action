@@ -1,27 +1,42 @@
-name: "My Go-Based GitHub Action"
-description: "Runs a custom Go program inside Docker"
-author: "Your Name"
-branding:
-  icon: "terminal"
-  color: "blue"
+name: 'Register build artifact'
+description: 'Creates an artifact version association with the workflow run'
 
 inputs:
-  message:
-    description: "Message to print"
+  cloudbees-url:
+    description: 'The CloudBees platform URL.'
     required: true
-    default: "Hello from Go!"
-  test-message:
-    description: "Message to print"
+  cloudbees-pat:
+    description: 'The CloudBees platform personal access token.'
     required: true
-    default: "Hello from Go!"
-
-outputs:
-  result:
-    description: "Processed message"
+  name:
+    description: 'The name of the artifact.'
+    required: true
+  version:
+    description: 'The version of the artifact.'
+    required: true
+  url:
+    description: 'The url where the artifact version is located e.g. docker.io/myapp/myimg:1.0.0.'
+    required: true
+  digest:
+    description: 'The artifact digest that uniquely and immutably identifies the artifact.'
+    required: false
+  type:
+    description: 'The type of the artifact. e.g. docker, maven'
+    required: false
 
 runs:
   using: "docker"
-  image: "docker://ghcr.io/srimanpadmanabancb/gha-action/custom-action:latest"  # Use prebuilt Docker image
-  args:
-    - ${{ inputs.message }}
-    - ${{ inputs.test-message }}
+  image: "docker://"  # @TODO: Add the image
+  env:
+    CLOUDBEES_API_URL: ${{ inputs.cloudbees-url }}
+    CLOUDBEES_API_TOKEN: ${{ inputs.cloudbees-pat }}
+    ARTIFACT_NAME: ${{ inputs.name }}
+    ARTIFACT_VERSION: ${{ inputs.version }}
+    ARTIFACT_URL: ${{ inputs.url }}
+    ARTIFACT_DIGEST: ${{ inputs.digest }}
+    ARTIFACT_TYPE: ${{ inputs.type }}
+    GITHUB_RUN_ID: ${{ github.run_id }}
+    GITHUB_RUN_ATTEMPT: ${{ github.run_attempt }}
+    GITHUB_RUN_NUMBER: ${{ github.run_number }}
+    REPO_FULL_NAME: ${{ github.repository }}
+    WORKFLOW_NAME: ${{ github.workflow }}

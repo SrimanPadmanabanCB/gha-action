@@ -1,12 +1,12 @@
 # Use the official Go base image for building
-FROM golang:1.20 as builder
+FROM golang:1.23 as builder
 
 # Set environment for Go modules
 WORKDIR /app
 COPY . .
 
 # Build the Go application (static binary for portability)
-RUN go mod tidy && go build -o action-app main.go 
+RUN go mod tidy && go build -o action-app main.go
 
 # Use a small base image for final image
 FROM alpine:latest

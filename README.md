@@ -1,1 +1,1 @@
-# gha-action
+# gha-register-build-artifact
