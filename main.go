@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/calculi-corp/gha-register-build-artifact/cmd"
+	"gha-register-build-artifact/cmd"
 	"log"
 )
 

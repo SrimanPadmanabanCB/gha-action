@@ -3,7 +3,7 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"github.com/calculi-corp/gha-register-build-artifact/internal/artifacts"
+	"gha-register-build-artifact/internal/artifacts"
 	"github.com/spf13/cobra"
 	"os"
 	"os/signal"
