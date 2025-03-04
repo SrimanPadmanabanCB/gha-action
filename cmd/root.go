@@ -24,9 +24,6 @@ func Execute() error {
 }
 
 func init() {
-	cmd.Flags().StringVar(&cfg.RepoFullName, "repo-full-name", "", "Dockerfile is the path to the Dockerfile to build")
-	cmd.Flags().StringVar(&cfg.WorkflowName, "workflow-name", "", "Dockerfile is the path to the Dockerfile to build")
-
 	err := setEnvVars(&cfg)
 	if err != nil {
 		panic(err)
@@ -102,6 +99,13 @@ func setEnvVars(cfg *artifacts.Config) error {
 	}
 
 	cfg.GhaRunNumber = ghaRunNumber
+
+	workflowName := os.Getenv(artifacts.WorkflowName)
+	if ghaRunNumber == "" {
+		return fmt.Errorf(artifacts.WorkflowName + " is not set in the environment")
+	}
+
+	cfg.WorkflowName = workflowName
 	return nil
 }
 
