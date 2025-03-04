@@ -24,8 +24,8 @@ func Execute() error {
 }
 
 func init() {
-	cmd.Flags().StringVar(&cfg.RepoFullName, artifacts.RepoFullName, "", "Dockerfile is the path to the Dockerfile to build")
-	cmd.Flags().StringVar(&cfg.WorkflowName, artifacts.WorkflowName, "", "Dockerfile is the path to the Dockerfile to build")
+	cmd.Flags().StringVar(&cfg.RepoFullName, "repo-full-name", "", "Dockerfile is the path to the Dockerfile to build")
+	cmd.Flags().StringVar(&cfg.WorkflowName, "workflow-name", "", "Dockerfile is the path to the Dockerfile to build")
 
 	err := setEnvVars(&cfg)
 	if err != nil {
