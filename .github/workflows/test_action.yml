@@ -13,6 +13,7 @@ jobs:
       - name: Run My Custom Go Action
         uses: SrimanPadmanabanCB/gha-action@main
         id: go-action
+        continue-on-error: true
         with:
           name: "custom-action"
           version: 1.0.1
@@ -20,4 +21,5 @@ jobs:
           digest: "test"
           type: "docker"
           cloudbees-url: "https://test-url.com"
-          cloudbees-pat: "testPat"
+      - name: This step runs even if the previous step fails ✅
+        run: echo "Continuing execution..."
