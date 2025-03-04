@@ -28,12 +28,23 @@ func (config *Config) Run(_ context.Context) (err error) {
 	return nil
 }
 
+func getSubject(config *Config) string {
+	return config.GhaWorkflowRef + "|" + config.GhaRunId + "|" + config.GhaRunAttempt + "|" + config.GhaRunNumber
+}
+
+func getSource(config *Config) string {
+	sourcePrefix := GithubProvider
+	if config.GhaServerUrl != "" {
+		sourcePrefix = config.GhaServerUrl + "/"
+	}
+	return sourcePrefix + config.GhaRepository
+}
 func prepareCloudEvent(config *Config, output Output) (event.Event, error) {
 	cloudEvent := cloudevents.NewEvent()
 	cloudEvent.SetID(uuid.NewString())
-	cloudEvent.SetSubject(config.WorkflowName + "|" + config.GhaRunId + "|" + config.GhaRunAttempt + "|" + config.GhaRunNumber)
+	cloudEvent.SetSubject(getSubject(config))
 	cloudEvent.SetType(BuildArtifactType)
-	cloudEvent.SetSource(config.RepoFullName)
+	cloudEvent.SetSource(getSource(config))
 	cloudEvent.SetSpecVersion(SpecVersion)
 	cloudEvent.SetTime(time.Now())
 	err := cloudEvent.SetData(ContentTypeJson, output)
@@ -63,7 +74,7 @@ func prepareCloudEventData(config *Config) Output {
 func sendCloudEvent(cloudEvent event.Event, config *Config) error {
 	eventJSON, err := json.Marshal(cloudEvent)
 	if err != nil {
-		return fmt.Errorf("Error encoding CloudEvent JSON:", err)
+		return fmt.Errorf("error encoding CloudEvent JSON %s", err)
 
 	}
 	req, _ := http.NewRequest(PostMethod, config.CloudBeesApiUrl, bytes.NewBuffer(eventJSON))
@@ -76,7 +87,7 @@ func sendCloudEvent(cloudEvent event.Event, config *Config) error {
 	client := &http.Client{}
 	resp, err := client.Do(req) // Fire and forget
 	if err != nil {
-		return fmt.Errorf("error sending CloudEvent", err)
+		return fmt.Errorf("error sending CloudEvent %s", err)
 
 	}
 	defer func(Body io.ReadCloser) {

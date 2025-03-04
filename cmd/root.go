@@ -100,12 +100,22 @@ func setEnvVars(cfg *artifacts.Config) error {
 
 	cfg.GhaRunNumber = ghaRunNumber
 
-	workflowName := os.Getenv(artifacts.WorkflowName)
-	if ghaRunNumber == "" {
-		return fmt.Errorf(artifacts.WorkflowName + " is not set in the environment")
+	ghaRepository := os.Getenv(artifacts.GithubRepository)
+	if ghaRepository == "" {
+		return fmt.Errorf(artifacts.GithubRepository + " is not set in the environment")
 	}
 
-	cfg.WorkflowName = workflowName
+	cfg.GhaRepository = ghaRepository
+
+	ghaWorkflowRef := os.Getenv(artifacts.GithubWorkflowRef)
+	if ghaWorkflowRef == "" {
+		return fmt.Errorf(artifacts.GithubWorkflowRef + " is not set in the environment")
+	}
+
+	cfg.GhaWorkflowRef = ghaWorkflowRef
+
+	cfg.GhaServerUrl = os.Getenv(artifacts.GithubServerUrl)
+
 	return nil
 }
 

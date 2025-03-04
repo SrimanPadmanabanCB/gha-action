@@ -15,6 +15,7 @@ type Config struct {
 	GhaRunNumber      string `json:"gha-run-number,omitempty"`
 	CloudBeesApiUrl   string `json:"cloudbees-api-url,omitempty"`
 	CloudBeesApiToken string `json:"cloudbees-api-token,omitempty"`
-	RepoFullName      string `json:"repo-full-name,omitempty"`
-	WorkflowName      string `json:"workflow-name,omitempty"`
+	GhaRepository     string `json:"gha-repository,omitempty"`
+	GhaWorkflowRef    string `json:"gha-workflow-ref,omitempty"`
+	GhaServerUrl      string `json:"gha-server-url,omitempty"`
 }

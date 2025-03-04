@@ -10,12 +10,12 @@ const (
 	GithubRunAttempt = "GITHUB_RUN_ATTEMPT"
 	GithubRunNumber  = "GITHUB_RUN_NUMBER"
 
-	CloudbeesApiUrl   = "CLOUDBEES_API_URL"
-	CloudbeesApiToken = "CLOUDBEES_API_TOKEN"
-	PUBLISHED         = "PUBLISHED"
-	RepoFullName      = "REPO_FULL_NAME"
-	WorkflowName      = "WORKFLOW_NAME"
-
+	CloudbeesApiUrl            = "CLOUDBEES_API_URL"
+	CloudbeesApiToken          = "CLOUDBEES_API_TOKEN"
+	PUBLISHED                  = "PUBLISHED"
+	GithubRepository           = "GITHUB_REPOSITORY"
+	GithubWorkflowRef          = "GITHUB_WORKFLOW_REF"
+	GithubServerUrl            = "GITHUB_SERVER_URL"
 	BuildArtifactType          = "cloudbees.platform.register.build.artifact"
 	SpecVersion                = "1.0"
 	ContentTypeJson            = "application/json"
@@ -24,4 +24,5 @@ const (
 	AuthorizationHeaderKey     = "Authorization"
 	Bearer                     = "Bearer "
 	PostMethod                 = "POST"
+	GithubProvider             = "GITHUB"
 )
