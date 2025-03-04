@@ -6,13 +6,12 @@ WORKDIR /app
 COPY . .
 
 # Build the Go application (static binary for portability)
-RUN go mod tidy && go build -a -tags "$BUILD_TAGS" -ldflags '-w -extldflags \"-static\"' -o action-app main.go
+RUN go mod tidy
+RUN GOOS=linux GOARCH=amd64 CGO_ENABLED=0  go build -o action-app main.go
 
-FROM alpine:latest
+FROM gcr.io/distroless/base:latest
 
-# Set working directory inside container
-WORKDIR /app
-COPY --from=builder /app/action-app .
+COPY --from=builder /app/action-app /app/action-app
 
 # Define the entrypoint to run the app
 ENTRYPOINT ["/app/action-app"]
