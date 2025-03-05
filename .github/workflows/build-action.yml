@@ -20,6 +20,16 @@ jobs:
         with:
           repository: SrimanPadmanabanCB/gha-action-read
           ref: main
+      - id: build-go-binary
+        name: Build Go binary
+        run: |
+          go build -a -tags "$BUILD_TAGS" -ldflags '-w -extldflags \"-static\"' -o gha_register_build_actions_app main.go
+        env:
+          BINARY_NAME: gha_register_build_actions_app
+          CGO_ENABLED: "0"
+          GOOS: linux
+          GOARCH: amd64
+
 
       - name: Log in to GHCR
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
