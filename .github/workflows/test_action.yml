@@ -21,5 +21,6 @@ jobs:
           digest: "test"
           type: "docker"
           cloudbees-url: "https://test-url.com"
+          cloudbees-pat: test
       - name: This step runs even if the previous step fails ✅
         run: echo "Continuing execution..."
