@@ -20,7 +20,7 @@ jobs:
         with:
           repository: SrimanPadmanabanCB/gha-action-read
           ref: main
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           
       - id: build-go-binary
         name: Build Go binary
