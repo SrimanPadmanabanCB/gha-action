@@ -13,14 +13,11 @@ jobs:
       - name: Run My Custom Go Action
         uses: SrimanPadmanabanCB/gha-action@main
         id: go-action
-        continue-on-error: true
         with:
           name: "custom-action"
           version: 1.0.1
           url: "ghcr.io/srimanpadmanabancb/gha-action/custom-action:latest"
           digest: "test"
           type: "docker"
-          cloudbees-url: "https://test-url"
-          cloudbees-pat: test
-      - name: This step runs even if the previous step fails ✅
-        run: echo "Continuing execution..."
+          cloudbees-url: ${{ vars.CBP_PREPROD_URL }}
+          cloudbees-pat: ${{ secrets.CBP_GHA_PAT }}
