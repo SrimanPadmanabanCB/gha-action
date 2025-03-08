@@ -20,4 +20,4 @@ jobs:
           digest: "test"
           type: "docker"
           cloudbees-url: ${{ vars.CBP_PREPROD_URL }}
-          cloudbees-pat: ${{ secrets.CBP_GHA_PAT }}
+          cloudbees-pat: "WrongPAT"
