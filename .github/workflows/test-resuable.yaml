@@ -14,4 +14,4 @@ on:
 jobs:
   call_workflow:
     # Calls the reusable workflow
-    uses: SrimanPadmanabanCB/gha-action/.github/workflows/reusable.yaml@reusable-workflow
+    uses: SrimanPadmanabanCB/gha-action/.github/workflows/reusable.yaml@resuable-workflow
