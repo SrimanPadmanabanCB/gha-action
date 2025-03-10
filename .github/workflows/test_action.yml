@@ -2,7 +2,15 @@ name: Test My Go Action
 
 on:
   workflow_dispatch:
-  
+    inputs:
+      environment:
+        description: "Deployment Environment"
+        required: true
+        default: "staging"
+      version:
+        description: "Application Version"
+        required: false
+        default: "1.0"
 jobs:
   run-go-action:
     runs-on: ubuntu-latest
