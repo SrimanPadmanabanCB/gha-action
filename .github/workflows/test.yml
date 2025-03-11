@@ -1,20 +1,12 @@
-name: Upload data
-
-on:
-  push
-
+name: workflow
+on: [push]
 jobs:
-  upload:
+# main
+  check-bats-version:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Save PR number
-        env:
-          PR_NUMBER: ${{ github.event.number }}
-        run: |
-          mkdir -p ./pr
-          echo $PR_NUMBER > ./pr/pr_number
-      - uses: actions/upload-artifact@v4
+      - uses: actions/setup-node@v4
         with:
-          name: pr_number
-          path: pr/
+          node-version: '20'
+      - run: npm install -g bats
+      - run: bats -v
