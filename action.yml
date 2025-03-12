@@ -26,7 +26,7 @@ inputs:
 
 runs:
   using: "docker"
-  image: "docker://ghcr.io/srimanpadmanabancb/gha-action/custom-action:latest"  # @TODO: Add the image
+  image: "docker://ghcr.io/srimanpadmanabancb/gha-action/gha-register-build-artifact-action:latest"  # @TODO: Add the image
   env:
     CLOUDBEES_API_URL: ${{ inputs.cloudbees-url }}
     CLOUDBEES_API_TOKEN: ${{ inputs.cloudbees-pat }}
