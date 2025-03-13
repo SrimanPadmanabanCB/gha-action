@@ -11,4 +11,5 @@ jobs:
         run: echo "Hello from Step 1"
 
       - name: Step 2 - Use Previous Step ID
-        run: echo "Step ID: ${{ steps.step_one.id }}"
+        run: |
+          echo "Step ID: ${{ steps.step_one.id }}"
