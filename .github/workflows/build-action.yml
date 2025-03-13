@@ -11,4 +11,5 @@ jobs:
         run: echo "STEP_ID=step1" >> $GITHUB_ENV
 
       - name: Step 2 - Use Step ID in Later Step
-        run: echo "Step ID is: $STEP_ID"
+        run: |
+          echo "Step ID is: $STEP_ID"
