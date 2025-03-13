@@ -1,4 +1,4 @@
-name: Step ID Example Workflow
+name: Store Step ID Example
 
 on: [push, workflow_dispatch]
 
@@ -6,10 +6,9 @@ jobs:
   example-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Step 1 - Assign Step ID
-        id: step_one
-        run: echo "Hello from Step 1"
+      - name: Step 1 - Store Step ID
+        id: step1
+        run: echo "STEP_ID=step1" >> $GITHUB_ENV
 
-      - name: Step 2 - Use Previous Step ID
-        run: |
-          echo "Step ID: ${{ steps.step_one.id }}"
+      - name: Step 2 - Use Step ID in Later Step
+        run: echo "Step ID is: $STEP_ID"
