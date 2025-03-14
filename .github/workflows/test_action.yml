@@ -5,6 +5,7 @@ on:
   
 jobs:
   run-go-action:
+    name: "Test Job Name"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
