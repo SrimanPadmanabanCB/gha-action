@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Run My Custom Go Action
-        uses: SrimanPadmanabanCB/gha-action@main
+        uses: cloudbees-gha-cbp/register-build-artifact@main
         id: go-action
         with:
           name: "custom-action"
