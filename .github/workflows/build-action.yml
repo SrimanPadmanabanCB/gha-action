@@ -1,6 +1,7 @@
 name: Store Step ID Example
 
-on: [push, workflow_dispatch]
+on: 
+  pull_request:
 
 jobs:
   example-job:
