@@ -2,6 +2,8 @@ name: Store Step ID Example
 
 on: 
   pull_request:
+    branches:
+      - main
 
 jobs:
   example-job:
