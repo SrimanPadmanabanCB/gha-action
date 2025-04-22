@@ -1,4 +1,4 @@
-name: Store Step ID Example
+name: Test OIDC
 
 on: 
   workflow_dispatch:
